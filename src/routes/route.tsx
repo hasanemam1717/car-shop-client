@@ -5,7 +5,6 @@ import Register from "../pages/Register";
 import Home from "../pages/Home/Home";
 import Contact from "../pages/Contact";
 import MainLayout from "../components/layout/MainLayout";
-import AllCar from "../pages/AllCar";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: "allcar",
-        element: <AllCar></AllCar>,
+        // element: <AllCar></AllCar>,
       },
       {
         path: "contact",

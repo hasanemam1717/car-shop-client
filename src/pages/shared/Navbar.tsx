@@ -2,10 +2,18 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 import { BiArrowFromBottom, BiArrowFromTop } from "react-icons/bi";
+import { logOut, useCurrentUser } from "../../redux/feature/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 
 export default function Navbar() {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(useCurrentUser);
+  console.log(user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const handleLogOut = () => {
+    dispatch(logOut());
+  };
   return (
     <nav className="bg-opacity-30 bg-transparent  text-white w-full   z-10  ">
       <div className=" mx-auto px-4 lg:ml-2 sm:px-6 lg:px-8">
@@ -71,10 +79,24 @@ export default function Navbar() {
                   <Link to="#" className="block px-4 py-2 hover:bg-base"></Link>
                 </div>
               </div> */}
-
-              <Link to="/login" className="text-neutral hover:text-primary">
-                Login
-              </Link>
+              {user ? (
+                <>
+                  {" "}
+                  <Link
+                    onClick={() => handleLogOut()}
+                    className="text-neutral hover:text-primary"
+                  >
+                    LogOut
+                  </Link>{" "}
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <Link to="/login" className="text-neutral hover:text-primary">
+                    Login
+                  </Link>{" "}
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -91,7 +113,7 @@ export default function Navbar() {
                 Home
               </Link>
               <Link
-                to="/products"
+                to="/allcar"
                 onClick={toggleMenu}
                 className="text-neutral hover:bg-base block px-3 py-2 rounded-md"
               >

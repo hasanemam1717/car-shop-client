@@ -6,15 +6,20 @@ import router from "./routes/route.tsx";
 import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store.ts";
 import { PersistGate } from "redux-persist/integration/react";
+import { Toaster } from "sonner";
+import { HelmetProvider } from "react-helmet-async";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <div className="bg-black text-white">
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <RouterProvider router={router}></RouterProvider>
-        </PersistGate>
-      </Provider>
-    </div>
+    <HelmetProvider>
+      <div className="bg-gray-950 text-white">
+        <Toaster></Toaster>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <RouterProvider router={router}></RouterProvider>
+          </PersistGate>
+        </Provider>
+      </div>
+    </HelmetProvider>
   </StrictMode>
 );

@@ -1,14 +1,21 @@
+import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../components/SectionTitle";
-import Banner from "./Banner/Banner";
+import AllCar from "./AllCar";
+import BanndrVBg from "./Banner/BanndrVBg";
 
 const Home = () => {
   return (
     <div>
-      <Banner></Banner>
+      <Helmet>
+        <title>DetailX | Home</title>
+      </Helmet>
+      <BanndrVBg></BanndrVBg>
       <SectionTitle
-        mainHeading={"This is main heading"}
-        subHeading={"this is sub heading"}
+        mainHeading="Welcome to DetailX!"
+        subHeading="Full-Service
+          Detailing for Cars"
       ></SectionTitle>
+      <AllCar></AllCar>
     </div>
   );
 };

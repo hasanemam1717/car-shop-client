@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
@@ -7,6 +8,9 @@ export default function Register() {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {};
   return (
     <div className="min-h-screen bg-black flex items-center justify-center bg-base">
+      <Helmet>
+        <title>DetailX | Home</title>
+      </Helmet>
       <div className=" p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="lg:text-4xl text-xl font-semibold mb-6 text-primary text-center">
           Register Now

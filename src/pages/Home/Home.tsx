@@ -1,9 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../components/SectionTitle";
-import AllCar from "./AllCar";
 import BanndrVBg from "./Banner/BanndrVBg";
+import ProductCart from "../../components/ui/ProductCart";
+import { useGetAllCarQuery } from "../../redux/feature/product/productApi";
 
 const Home = () => {
+  const { data } = useGetAllCarQuery(undefined);
+  console.log(data?.response, "Data from AllProduct page");
   return (
     <div>
       <Helmet>
@@ -15,7 +18,11 @@ const Home = () => {
         subHeading="Full-Service
           Detailing for Cars"
       ></SectionTitle>
-      <AllCar></AllCar>
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+        {data?.response.map((item: any) => (
+          <ProductCart key={item._id} item={item}></ProductCart>
+        ))}
+      </div>
     </div>
   );
 };

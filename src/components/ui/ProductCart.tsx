@@ -7,7 +7,7 @@ const ProductCart = ({ item }) => {
     console.log("clicked");
   };
   return (
-    <div className="lg:w-[360px] w-full hover:border-1 hover:border-b-gray-200  rounded-sm  ">
+    <div className="lg:w-[360px] w-full hover:scale-102 hover:border-gray-100   transition-transform duration-300 hover:border  rounded-sm  ">
       <div className="w-full p-1 lg:p-5 ">
         <img
           src={image}
@@ -20,7 +20,11 @@ const ProductCart = ({ item }) => {
         <div>
           <h1 className="font-semibold text-2xl ">{brand}</h1>
           <h1 className="text-xl text-red-600">${price}</h1>
-          <h1 className="font-thin">{description}</h1>
+          <h1 className="font-thin">
+            {description.length < 50
+              ? `${description.slice(0, 50)}...`
+              : description}
+          </h1>
         </div>
         <div>
           <div className="mr-5 flex flex-col items-center gap-2">

@@ -6,6 +6,7 @@ const productApi = baseApi.injectEndpoints({
             query: () => ({
                 url: '/cars',
                 method: 'GET',
+
             })
             ,
             transformResponse: (response) => {

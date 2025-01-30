@@ -1,11 +1,33 @@
 import { Helmet } from "react-helmet-async";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useRegisterMutation } from "../redux/feature/auth/authApi";
+import { toast } from "sonner";
 
 export default function Register() {
-  const { register, handleSubmit } = useForm();
+  const { register, reset, handleSubmit } = useForm();
+  const navigate = useNavigate();
+  const [registration, { data }] = useRegisterMutation();
+  console.log(registration);
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {};
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    try {
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      };
+      registration(userInfo);
+      toast.success("Registration is successfully.");
+
+      reset();
+
+      navigate("/login");
+    } catch (err) {
+      console.log(err, "register");
+    }
+    console.log(data);
+  };
   return (
     <div className="min-h-screen bg-black flex items-center justify-center bg-base">
       <Helmet>

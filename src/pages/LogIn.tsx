@@ -41,7 +41,7 @@ export default function LogIn() {
   return (
     <div>
       <Helmet>
-        <title>DetailX | Home</title>
+        <title>DetailX | LogIn</title>
       </Helmet>
       <div className="min-h-screen bg-black flex items-center justify-center bg-base">
         <div className=" p-8 rounded-lg shadow-md w-full max-w-md">

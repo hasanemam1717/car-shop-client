@@ -19,7 +19,7 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.userData?.map((user) => (
+            {data?.userData?.map((user: any) => (
               <tr
                 key={user.id}
                 className="border-b hover:bg-gray-100 transition"

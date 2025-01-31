@@ -15,10 +15,10 @@ export default function LogIn() {
     },
   });
   const navigate = useNavigate();
-  const [logIn, { data, error }] = useLoginMutation();
+  const [logIn] = useLoginMutation();
 
-  console.log("data", data);
-  console.log("error", error);
+  // console.log("data", data);
+  // console.log("error", error);
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -30,8 +30,14 @@ export default function LogIn() {
       };
       const res = await logIn(userInfo).unwrap();
       const user = verifyToken(res.data.token) as TUser;
-      console.log(user);
-      dispatch(setUser({ user: user, token: res?.data?.token }));
+      // console.log(res.data.verifyUser.id);
+      dispatch(
+        setUser({
+          user: user,
+          token: res?.data?.token,
+          id: res?.data?.verifyUser?.id,
+        })
+      );
       toast.success("Login successfully", { id: toastId, duration: 2000 });
       navigate("/");
     } catch (err) {

@@ -24,24 +24,15 @@ const CreateCar = () => {
   console.log({ data, error });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    const selectedFile = data.image;
-    if (!selectedFile) {
-      alert("Image is required");
-    }
-    const carData = {
-      ...data,
-      image: selectedFile,
-    };
-    console.log(carData);
-    console.log(selectedFile, "Select");
-    console.log(JSON.stringify(data));
+    console.log(data);
+    // console.log(data.image);
 
-    // const formData = new FormData();
+    const formData = new FormData();
 
-    // formData.append("data", JSON.stringify(data));
-    // formData.append("file", data.image.name);
-    // console.log(formData);
-    // addCar(JSON.stringify(data)); // Send car data to the API
+    formData.append("file", data.image);
+    formData.append("data", JSON.stringify(data));
+    console.log(formData);
+    addCar(formData); // Send car data to the API
   };
 
   return (

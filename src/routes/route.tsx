@@ -11,6 +11,7 @@ import Users from "../pages/Dashboard/Users";
 import CreateCar from "../pages/Dashboard/CreateCar";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
 import UserDashboard from "../components/layout/UserDashboard";
+import OrderPage from "../components/products/OrderPage";
 
 const router = createBrowserRouter([
   {
@@ -70,8 +71,8 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "create-car",
-        element: <CreateCar></CreateCar>,
+        path: "my-order",
+        element: <OrderPage></OrderPage>,
       },
       {
         path: "user",

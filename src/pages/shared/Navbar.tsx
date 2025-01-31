@@ -2,16 +2,19 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 import { BiArrowFromBottom, BiArrowFromTop } from "react-icons/bi";
-import { useCurrentUser } from "../../redux/feature/auth/authSlice";
-import { useAppSelector } from "../../redux/hook";
+import { logOut, useCurrentUser } from "../../redux/feature/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import Dropdown from "../../components/ui/Dropdown";
 
 export default function Navbar() {
   const user = useAppSelector(useCurrentUser);
-  console.log(user);
+  const dispatch = useAppDispatch();
+  // console.log(user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
+  const handleLogOut = () => {
+    dispatch(logOut());
+  };
   return (
     <nav className="bg-opacity-30 bg-transparent  text-white w-full   z-10  ">
       <div className=" mx-auto px-4 lg:ml-2 sm:px-6 lg:px-8">
@@ -69,9 +72,9 @@ export default function Navbar() {
                 to="/cart"
                 className="relative text-neutral hover:text-primary"
               >
-                <CgShoppingCart className="h-6 w-6" />
+                <CiShoppingCart className="h-6 w-6" />
 
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full h-4 w-4 flex items-center justify-center text-xs"></span>
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full h-4 w-4 flex items-center justify-center text-xs"></span>
               </Link> */}
 
               {/* <div className="relative group">
@@ -132,46 +135,46 @@ export default function Navbar() {
               {/* Mobile Authentication Links */}
 
               <>
-                <Link
-                  to="/login"
-                  onClick={toggleMenu}
-                  className="text-neutral hover:bg-base block px-3 py-2 rounded-md"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/register"
-                  onClick={toggleMenu}
-                  className="text-neutral hover:bg-base block px-3 py-2 rounded-md"
-                >
-                  Register
-                </Link>
-              </>
+                {user ? (
+                  <div>
+                    <>
+                      <Link
+                        to="#"
+                        onClick={toggleMenu}
+                        className="text-neutral hover:bg-base block px-3 py-2 rounded-md"
+                      >
+                        {user?.role === "admin" ? (
+                          <>
+                            <Link to={"/dashboard"}>Dashboard</Link>
+                          </>
+                        ) : (
+                          <>
+                            <Link to={"/dashboardUser"}>Dashboard</Link>
+                          </>
+                        )}
+                      </Link>
 
-              <>
-                <Link
-                  to="#"
-                  onClick={toggleMenu}
-                  className="text-neutral hover:bg-base block px-3 py-2 rounded-md"
-                >
-                  {user?.role === "admin" ? (
-                    <>
-                      <Link to={"/dashboard"}>Dashboard</Link>
+                      <button
+                        onClick={() => {
+                          toggleMenu();
+                        }}
+                        className="w-full text-left text-neutral hover:bg-base block px-3 py-2 rounded-md"
+                      >
+                        <Link to={"#"} onClick={handleLogOut}>
+                          Logout
+                        </Link>
+                      </button>
                     </>
-                  ) : (
-                    <>
-                      <h1>This is not admin</h1>
-                    </>
-                  )}
-                </Link>
-                <button
-                  onClick={() => {
-                    toggleMenu();
-                  }}
-                  className="w-full text-left text-neutral hover:bg-base block px-3 py-2 rounded-md"
-                >
-                  Logout
-                </button>
+                  </div>
+                ) : (
+                  <Link
+                    to="/login"
+                    onClick={toggleMenu}
+                    className="text-neutral hover:bg-base block px-3 py-2 rounded-md"
+                  >
+                    LogIn
+                  </Link>
+                )}
               </>
             </div>
           </div>

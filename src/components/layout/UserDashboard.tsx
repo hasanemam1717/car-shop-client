@@ -43,24 +43,10 @@ const UserDashboard = () => {
           <ul className="space-y-5">
             <NavLink
               className="flex gap-2 hover:bg-red-600 rounded-md text-xl p-2 items-center"
-              to={"/dashboard/create-car"}
+              to={"/dashboardUser/my-order"}
               onClick={() => setIsSidebarOpen(false)}
             >
-              <IoCreateOutline /> Create Car
-            </NavLink>
-            <NavLink
-              className="flex gap-2 hover:bg-red-600 rounded-md text-xl p-2 items-center"
-              to={"/dashboard/user"}
-              onClick={() => setIsSidebarOpen(false)}
-            >
-              <BiUser /> User
-            </NavLink>
-            <NavLink
-              className="flex gap-2 hover:bg-red-600 rounded-md text-xl p-2 items-center"
-              to={"/dashboard/user"}
-              onClick={() => setIsSidebarOpen(false)}
-            >
-              <BiUser /> User
+              <IoCreateOutline /> My Order
             </NavLink>
           </ul>
         </div>

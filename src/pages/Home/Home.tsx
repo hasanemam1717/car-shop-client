@@ -3,6 +3,9 @@ import SectionTitle from "../../components/SectionTitle";
 import BanndrVBg from "./Banner/BanndrVBg";
 import ProductCart from "../../components/ui/ProductCart";
 import { useGetAllCarQuery } from "../../redux/feature/product/productApi";
+import Testimonials from "./Banner/Review";
+import HeroSection from "./Banner/HeroSection";
+import Banner from "./Banner/Banner";
 
 const Home = () => {
   const { data } = useGetAllCarQuery(undefined);
@@ -23,6 +26,13 @@ const Home = () => {
           <ProductCart key={item._id} item={item}></ProductCart>
         ))}
       </div>
+      <SectionTitle
+        mainHeading="Client Reviews"
+        subHeading="   What Our Customers Say"
+      ></SectionTitle>
+      <Testimonials></Testimonials>
+      <HeroSection></HeroSection>
+      <Banner></Banner>
     </div>
   );
 };

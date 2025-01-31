@@ -1,8 +1,24 @@
-const ProductCart = ({ item }) => {
-  const { image, description, price, brand, category, name, inStock } = item;
+import { toast } from "sonner";
+import { useAppSelector } from "../../redux/hook";
+import { useCurrentUser } from "../../redux/feature/auth/authSlice";
 
-  const handleOrder = () => {
-    console.log("clicked");
+const ProductCart = ({ item }) => {
+  const {
+    image,
+    description,
+    price,
+    brand,
+    category,
+    name,
+    inStock,
+    quantity,
+  } = item;
+  const user = useAppSelector(useCurrentUser);
+
+  const handleOrder = (id) => {
+    console.log("clicked", id, "Email user", user.email, item.price);
+
+    toast.message("Clicked Order now");
   };
 
   return (
@@ -32,6 +48,7 @@ const ProductCart = ({ item }) => {
                 Out of stock
               </span>
             )}
+            <small className="text-black">Quantity:{quantity}</small>
           </div>
         </div>
         <p className="mt-2 text-sm text-gray-600">
@@ -41,7 +58,7 @@ const ProductCart = ({ item }) => {
         </p>
         <div className="mt-4">
           <button
-            onClick={handleOrder}
+            onClick={() => handleOrder(item?._id)}
             disabled={!inStock}
             className={`w-full py-2 font-semibold text-white rounded ${
               inStock

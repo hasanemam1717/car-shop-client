@@ -154,7 +154,15 @@ export default function Navbar() {
                   onClick={toggleMenu}
                   className="text-neutral hover:bg-base block px-3 py-2 rounded-md"
                 >
-                  {/* {user?.role === 'admin' ? 'Admin Dashboard' : 'My Dashboard'} */}
+                  {user?.role === "admin" ? (
+                    <>
+                      <Link to={"/dashboard"}>Dashboard</Link>
+                    </>
+                  ) : (
+                    <>
+                      <h1>This is not admin</h1>
+                    </>
+                  )}
                 </Link>
                 <button
                   onClick={() => {

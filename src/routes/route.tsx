@@ -8,6 +8,9 @@ import MainLayout from "../components/layout/MainLayout";
 import AllCar from "../pages/Home/AllCar";
 import Dashboard from "../components/layout/Dashbard";
 import Users from "../pages/Dashboard/Users";
+import CreateCar from "../pages/Dashboard/CreateCar";
+import ProtectedRoute from "../components/layout/ProtectedRoute";
+import UserDashboard from "../components/layout/UserDashboard";
 
 const router = createBrowserRouter([
   {
@@ -41,9 +44,35 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    path: "/dashboard",
+    element: (
+      <ProtectedRoute>
+        <Dashboard></Dashboard>
+      </ProtectedRoute>
+    ),
     children: [
+      {
+        path: "create-car",
+        element: <CreateCar></CreateCar>,
+      },
+      {
+        path: "user",
+        element: <Users></Users>,
+      },
+    ],
+  },
+  {
+    path: "/dashboardUser",
+    element: (
+      <ProtectedRoute>
+        <UserDashboard></UserDashboard>
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: "create-car",
+        element: <CreateCar></CreateCar>,
+      },
       {
         path: "user",
         element: <Users></Users>,

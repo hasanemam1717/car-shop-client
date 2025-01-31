@@ -6,7 +6,7 @@ import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IoCreateOutline } from "react-icons/io5";
 
-const Dashboard = () => {
+const UserDashboard = () => {
   const user = useAppSelector(useCurrentUser);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -17,7 +17,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <div className="bg-gray-900 text-white p-4 flex justify-between items-center">
+      <div className="bg-blue-950 text-white p-4 flex justify-between items-center">
         <Link to={"/"} className="text-2xl font-bold">
           {user?.role} Dashboard
         </Link>
@@ -34,7 +34,7 @@ const Dashboard = () => {
       <div className="flex">
         {/* Sidebar */}
         <div
-          className={`bg-gray-900 text-white w-64 min-h-screen p-4 transform transition-transform duration-200 ease-in-out ${
+          className={`bg-blue-950 text-white w-64 min-h-screen p-4 transform transition-transform duration-200 ease-in-out ${
             isSidebarOpen
               ? "translate-x-0"
               : "-translate-x-full lg:translate-x-0"
@@ -74,4 +74,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default UserDashboard;

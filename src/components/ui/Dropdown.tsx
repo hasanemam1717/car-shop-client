@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch } from "../../redux/hook";
-import { logOut } from "../../redux/feature/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { logOut, useCurrentUser } from "../../redux/feature/auth/authSlice";
 import { FaRegUser } from "react-icons/fa6";
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
+  const user = useAppSelector(useCurrentUser);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -38,12 +39,28 @@ const Dropdown = () => {
         >
           <div className="py-1">
             {/* Dashboard Button */}
-            <Link
-              to="/dashboard"
-              className="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-indigo-600 hover:text-white transition duration-200 ease-in-out"
-              role="menuitem"
-            >
-              Dashboard
+            <Link to={"#"}>
+              {user?.role === "admin" ? (
+                <>
+                  <Link
+                    to="/dashboard"
+                    className="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-indigo-600 hover:text-white transition duration-200 ease-in-out"
+                    role="menuitem"
+                  >
+                    Dashboard
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/dashboardUser"
+                    className="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-indigo-600 hover:text-white transition duration-200 ease-in-out"
+                    role="menuitem"
+                  >
+                    Dashboard
+                  </Link>
+                </>
+              )}
             </Link>
 
             {/* Logout Button */}

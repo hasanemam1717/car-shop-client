@@ -122,7 +122,7 @@ const Products = () => {
               <CiFilter size={24} className="text-white" />
               <h1 className="font-semibold text-lg">Filter</h1>
             </div>
-            <div className="space-y-4">
+            <div className="flex flex-col gap-5">
               <Select
                 placeholder="Brand"
                 style={{ width: "100%" }}

@@ -13,7 +13,14 @@ const productApi = baseApi.injectEndpoints({
                 return { response: response.data };
             },
         }),
+        createCar: builder.mutation({
+            query: (data) => ({
+                url: '/cars',
+                method: 'POST',
+                body: data,
+            }),
+        }),
     }),
 });
 
-export const { useGetAllCarQuery } = productApi;
+export const { useGetAllCarQuery, useCreateCarMutation } = productApi;

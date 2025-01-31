@@ -1,5 +1,5 @@
 const ProductCart = ({ item }) => {
-  const { image, description, price, brand, name, inStock } = item;
+  const { image, description, price, brand, category, name, inStock } = item;
 
   const handleOrder = () => {
     console.log("clicked");
@@ -18,6 +18,8 @@ const ProductCart = ({ item }) => {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-xl font-semibold text-gray-800">{brand}</h1>
+            <h1 className="text-sm font-thin text-gray-800">{category}</h1>
+
             <h1 className="text-lg font-bold text-red-600">${price}</h1>
           </div>
           <div className="flex flex-col items-end">

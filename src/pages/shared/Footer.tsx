@@ -14,8 +14,8 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Column 1: About Section */}
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">
-              About Car Shop
+            <h3 className="font-semibold text-red-600 text-2xl lg:text-3xl mb-4">
+              DetailX
             </h3>
             <p className="text-sm">
               Car Shop is your trusted destination for premium cars and

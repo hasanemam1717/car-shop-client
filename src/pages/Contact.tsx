@@ -175,7 +175,7 @@ export default function Contact() {
               className={`w-full py-3 rounded flex items-center justify-center ${
                 submitStatus === "sending"
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-primary text-white hover:bg-blue-700"
+                  : "bg-primary text-white hover:bg-red-600"
               }`}
             >
               {submitStatus === "sending" ? (

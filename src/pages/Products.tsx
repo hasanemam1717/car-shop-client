@@ -7,113 +7,118 @@ import { CiFilter } from "react-icons/ci";
 
 const Products = () => {
   const { data, isLoading } = useGetAllCarQuery(undefined);
-  console.log(data, "data from products");
+
+  // Placeholder handlers for search, sort, and filters
   const handleSearch = (data: string) => {
     console.log(data);
   };
+
   const handleSort = (value: string) => {
     console.log(`${value}`);
   };
+
   const handleBrand = (value: string) => {
     console.log(`${value}`);
   };
+
   const handleCategory = (value: string) => {
     console.log(`${value}`);
   };
+
   return (
-    <div className="container mx-auto">
-      <h1 className="my-8 text-3xl text-center">All cars</h1>
-      <div className="lg:flex w-full  justify-between items-center  ">
-        <SearchCars handleSearch={handleSearch}></SearchCars>
-        <div>
-          {/* Sorting by price */}
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="my-8 text-3xl text-center font-bold text-white">
+        All Cars
+      </h1>
+
+      {/* Search and Sort Section */}
+      <div className="flex flex-col lg:flex-row justify-between items-center gap-4 mb-8">
+        <SearchCars handleSearch={handleSearch} />
+        <div className="w-full lg:w-auto">
           <Select
             defaultValue="Low"
-            style={{ width: 250 }}
+            style={{ width: "100%", maxWidth: "250px" }}
             onChange={handleSort}
             options={[
               {
                 label: <span>Price</span>,
                 title: "price",
                 options: [
-                  { label: <span>Low</span>, value: "desc" },
-                  { label: <span>High</span>, value: "asc" },
+                  { label: <span>Low to High</span>, value: "asc" },
+                  { label: <span>High to Low</span>, value: "desc" },
                 ],
               },
             ]}
           />
         </div>
       </div>
-      {/* content */}
 
-      <div className="grid grid-cols-12 gap-2 ">
-        <div className="lg:col-span-2 col-span-12 ">
-          {/* search by brand and category */}
-          <div>
-            <div className="h-ful min-h-full bg-gray-900 ">
-              <div className="flex gap-2 items-center mt-5 p-1 lg:p-5 ">
-                <CiFilter size={24} />
-                <h1 className="font-semibold">Filter</h1>
-              </div>
-              <div className="mt-8 flex flex-col gap-3">
-                {/* sort by brand */}
-                <Select
-                  placeholder="Brand"
-                  style={{ width: 250 }}
-                  onChange={handleCategory}
-                  options={[
-                    {
-                      label: <span>Brand</span>,
-                      title: "Brand",
-                      options: [
-                        { label: <span>Low</span>, value: "desc" },
-                        { label: <span>High</span>, value: "asc" },
-                      ],
-                    },
-                  ]}
-                />{" "}
-                <Select
-                  placeholder="Category"
-                  style={{ width: 250 }}
-                  onChange={handleCategory}
-                  options={[
-                    {
-                      label: <span>Category</span>,
-                      title: "Category",
-                      options: [
-                        { label: <span>Low</span>, value: "desc" },
-                        { label: <span>High</span>, value: "asc" },
-                      ],
-                    },
-                  ]}
-                />
-                <button className="w-full bg-red-600 rounded-sm p-1">
-                  Reset
-                </button>
-              </div>
+      {/* Main Content Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Filter Sidebar */}
+        <div className="lg:col-span-2 col-span-12">
+          <div className="bg-gray-900 s text-white rounded-lg p-4">
+            <div className="flex items-center gap-2 mb-6">
+              <CiFilter size={24} className="text-white" />
+              <h1 className="font-semibold text-lg">Filter</h1>
+            </div>
+            <div className="space-y-4">
+              <Select
+                placeholder="Brand"
+                style={{ width: "100%" }}
+                onChange={handleBrand}
+                options={[
+                  {
+                    label: <span>Brand</span>,
+                    title: "Brand",
+                    options: [
+                      { label: <span>Brand 1</span>, value: "brand1" },
+                      { label: <span>Brand 2</span>, value: "brand2" },
+                    ],
+                  },
+                ]}
+              />
+              <Select
+                placeholder="Category"
+                style={{ width: "100%" }}
+                onChange={handleCategory}
+                options={[
+                  {
+                    label: <span>Category</span>,
+                    title: "Category",
+                    options: [
+                      { label: <span>Category 1</span>, value: "category1" },
+                      { label: <span>Category 2</span>, value: "category2" },
+                    ],
+                  },
+                ]}
+              />
+              <button className="w-full bg-red-600 text-white rounded-md py-2 hover:bg-red-700 transition-colors duration-200">
+                Reset
+              </button>
             </div>
           </div>
         </div>
-        <div className="col-span-10">
-          <div>
-            {isLoading ? (
-              <Loading></Loading>
-            ) : (
-              <>
-                {data?.response.length === 0 ? (
-                  <div className="text-center text-3xl items-center  text-red-600">
-                    No car available for sale...🚕
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-10 justify-between">
-                    {data?.response.map((item: any) => (
-                      <ProductCart key={item._id} item={item}></ProductCart>
-                    ))}
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+
+        {/* Product Grid */}
+        <div className="lg:col-span-10 col-span-12">
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <>
+              {data?.response.length === 0 ? (
+                <div className="text-center text-3xl text-red-600 py-10">
+                  No cars available for sale... 🚕
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {data?.response.map((item: any) => (
+                    <ProductCart key={item._id} item={item} />
+                  ))}
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
     </div>

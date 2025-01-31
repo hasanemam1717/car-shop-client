@@ -2,25 +2,26 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 import { BiArrowFromBottom, BiArrowFromTop } from "react-icons/bi";
-import { logOut, useCurrentUser } from "../../redux/feature/auth/authSlice";
-import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { useCurrentUser } from "../../redux/feature/auth/authSlice";
+import { useAppSelector } from "../../redux/hook";
+import Dropdown from "../../components/ui/Dropdown";
 
 export default function Navbar() {
-  const dispatch = useAppDispatch();
   const user = useAppSelector(useCurrentUser);
   console.log(user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const handleLogOut = () => {
-    dispatch(logOut());
-  };
+
   return (
     <nav className="bg-opacity-30 bg-transparent  text-white w-full   z-10  ">
       <div className=" mx-auto px-4 lg:ml-2 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-primary">
-              car shop
+            <Link
+              to="/"
+              className="text-2xl lg:text-3xl italic text-red-600 font-bold text-primary"
+            >
+              DetailX
             </Link>
           </div>
 
@@ -81,13 +82,7 @@ export default function Navbar() {
               </div> */}
               {user ? (
                 <>
-                  {" "}
-                  <Link
-                    onClick={() => handleLogOut()}
-                    className="text-neutral hover:text-primary"
-                  >
-                    LogOut
-                  </Link>{" "}
+                  <Dropdown></Dropdown>
                 </>
               ) : (
                 <>

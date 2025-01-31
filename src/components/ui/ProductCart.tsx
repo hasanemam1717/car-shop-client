@@ -1,57 +1,54 @@
-import { Button } from "antd";
-
 const ProductCart = ({ item }) => {
-  const { image, description, price, brand, category, name, inStock } = item;
-  console.log(inStock);
+  const { image, description, price, brand, name, inStock } = item;
+
   const handleOrder = () => {
     console.log("clicked");
   };
+
   return (
-    <div className="lg:w-[360px] w-full hover:scale-102 hover:border-gray-100   transition-transform duration-300 hover:border  rounded-sm  ">
-      <div className="w-full p-1 lg:p-5 ">
+    <div className="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1">
+      <div className="relative w-full h-64 overflow-hidden">
         <img
           src={image}
-          className="w-full h-[350px]  items-center object-cover  "
+          className="absolute inset-0 w-full h-full object-cover"
           alt={`${name}.jpg`}
         />
       </div>
-      <hr className="text-gray-200 " />
-      <div className=" items-center gap-1 flex justify-between mt-1  ml-4">
-        <div>
-          <h1 className="font-semibold text-2xl ">{brand}</h1>
-          <h1 className="text-xl text-red-600">${price}</h1>
-          <h1 className="font-thin">
-            {description.length < 50
-              ? `${description.slice(0, 50)}...`
-              : description}
-          </h1>
-        </div>
-        <div>
-          <div className="mr-5 flex flex-col items-center gap-2">
-            {inStock ? (
-              <h1
-                className=" text-green-600 right-0 p-1 rounded-sm "
-                style={{ border: "1px solid white" }}
-              >
-                Available
-              </h1>
-            ) : (
-              <h1
-                className=" text-red-600 right-0 p-1 rounded-sm "
-                style={{ border: "1px solid white" }}
-              >
-                {" "}
-                Out of stock{" "}
-              </h1>
-            )}
-            <Button
-              htmlType="submit"
-              onClick={() => handleOrder()}
-              style={{ background: "red", color: "white" }}
-            >
-              Order now
-            </Button>
+      <div className="p-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-semibold text-gray-800">{brand}</h1>
+            <h1 className="text-lg font-bold text-red-600">${price}</h1>
           </div>
+          <div className="flex flex-col items-end">
+            {inStock ? (
+              <span className="px-2 py-1 text-sm font-semibold text-green-600 bg-green-100 rounded-full">
+                Available
+              </span>
+            ) : (
+              <span className="px-2 py-1 text-sm font-semibold text-red-600 bg-red-100 rounded-full">
+                Out of stock
+              </span>
+            )}
+          </div>
+        </div>
+        <p className="mt-2 text-sm text-gray-600">
+          {description.length > 50
+            ? `${description.slice(0, 50)}...`
+            : description}
+        </p>
+        <div className="mt-4">
+          <button
+            onClick={handleOrder}
+            disabled={!inStock}
+            className={`w-full py-2 font-semibold text-white rounded ${
+              inStock
+                ? "bg-red-600 hover:bg-red-700"
+                : "bg-gray-400 cursor-not-allowed"
+            } transition-colors duration-200`}
+          >
+            Order now
+          </button>
         </div>
       </div>
     </div>

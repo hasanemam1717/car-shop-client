@@ -15,8 +15,12 @@ export default function Register() {
       const userInfo = {
         name: data.name,
         email: data.email,
+        phone: data.phone,
+        city: data.city,
+        address: data.address,
         password: data.password,
       };
+      console.log(userInfo);
       registration(userInfo);
       toast.success("Registration is successfully.");
 
@@ -31,7 +35,7 @@ export default function Register() {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center bg-base">
       <Helmet>
-        <title>DetailX | Home</title>
+        <title>DetailX | Register</title>
       </Helmet>
       <div className=" p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="lg:text-4xl text-xl font-semibold mb-6 text-primary text-center">
@@ -48,7 +52,7 @@ export default function Register() {
               placeholder="write your name"
               className="p-1 border-gray-100 text-black bg-white rounded-xs "
             />
-          </div>{" "}
+          </div>
           <div className="flex space-y-4 flex-col">
             <label htmlFor="email" className="text-xl ">
               Email
@@ -57,6 +61,39 @@ export default function Register() {
               type="email"
               {...register("email")}
               placeholder="write your email"
+              className="p-1 border-gray-100 text-black bg-white rounded-xs "
+            />
+          </div>
+          <div className="flex space-y-4 flex-col">
+            <label htmlFor="email" className="text-xl ">
+              Phone
+            </label>
+            <input
+              type="text"
+              {...register("phone")}
+              placeholder="write your phone number"
+              className="p-1 border-gray-100 text-black bg-white rounded-xs "
+            />
+          </div>{" "}
+          <div className="flex space-y-4 flex-col">
+            <label htmlFor="email" className="text-xl ">
+              City
+            </label>
+            <input
+              type="text"
+              {...register("city")}
+              placeholder="write your city"
+              className="p-1 border-gray-100 text-black bg-white rounded-xs "
+            />
+          </div>{" "}
+          <div className="flex space-y-4 flex-col">
+            <label htmlFor="email" className="text-xl ">
+              Address
+            </label>
+            <input
+              type="text"
+              {...register("address")}
+              placeholder="write your address"
               className="p-1 border-gray-100 text-black bg-white rounded-xs "
             />
           </div>

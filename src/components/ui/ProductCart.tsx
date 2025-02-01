@@ -1,6 +1,7 @@
 import { toast } from "sonner";
 import { useAppSelector } from "../../redux/hook";
 import { useCurrentUser } from "../../redux/feature/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const ProductCart = ({ item }) => {
   const {
@@ -14,11 +15,20 @@ const ProductCart = ({ item }) => {
     quantity,
   } = item;
   const user = useAppSelector(useCurrentUser);
+  const navigate = useNavigate();
 
   const handleOrder = (id) => {
     console.log("clicked", id, "Email user", user.email, item.price);
-
-    toast.message("Clicked Order now");
+    try {
+      if (user) {
+      } else {
+        toast.error("You well be logged in fast.");
+        navigate("/login");
+      }
+    } catch (err) {
+      console.log(err, "Error from product cart");
+      toast.error("Something went wrong");
+    }
   };
 
   return (

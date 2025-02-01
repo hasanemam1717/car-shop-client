@@ -12,6 +12,7 @@ import CreateCar from "../pages/Dashboard/CreateCar";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
 import UserDashboard from "../components/layout/UserDashboard";
 import OrderPage from "../components/products/OrderPage";
+import CheckoutPage from "../pages/Dashboard/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
         path: "user",
         element: <Users></Users>,
       },
+      {
+        path: "checkout",
+        element: <CheckoutPage></CheckoutPage>,
+      },
     ],
   },
   {
@@ -77,6 +82,10 @@ const router = createBrowserRouter([
       {
         path: "user",
         element: <Users></Users>,
+      },
+      {
+        path: "checkout",
+        element: <CheckoutPage></CheckoutPage>,
       },
     ],
   },

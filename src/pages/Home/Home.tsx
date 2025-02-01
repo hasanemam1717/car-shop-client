@@ -9,12 +9,9 @@ import Banner from "./Banner/Banner";
 
 const Home = () => {
   const { data } = useGetAllCarQuery(undefined);
-  console.log(data?.response, "Data from AllProduct page");
+  // console.log(data?.response, "Data from AllProduct page");
   return (
     <div>
-      <Helmet>
-        <title>DetailX | Home</title>
-      </Helmet>
       <BanndrVBg></BanndrVBg>
       <SectionTitle
         mainHeading="Welcome to DetailX!"

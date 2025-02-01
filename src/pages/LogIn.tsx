@@ -11,7 +11,7 @@ export default function LogIn() {
   const { register, handleSubmit } = useForm({
     defaultValues: {
       email: "admin@example.com",
-      password: "a-0001",
+      password: "123456",
     },
   });
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import authSlice from './feature/auth/authSlice'
 import { baseApi } from './api/baseApi'
 import storage from 'redux-persist/lib/storage'
@@ -13,21 +13,32 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist'
+import { cartSlice } from './feature/product/productCartSlice'
 
+
+
+// new
+export const rootReducer = combineReducers({
+    [baseApi.reducerPath]: baseApi.reducer,
+    auth: authSlice.reducer,
+    cart: cartSlice.reducer,
+});
 const persistConfig = {
-    key: "auth",
+    key: "root",
     storage
 }
+//   end
 
-const persistedAuthReducer = persistReducer(persistConfig, authSlice.reducer)
+const persistedAuthReducer = persistReducer(persistConfig, rootReducer)
 
 
 export const store = configureStore({
 
-    reducer: {
-        [baseApi.reducerPath]: baseApi.reducer,
-        auth: persistedAuthReducer
-    },
+    reducer: persistedAuthReducer,
+    // {
+    //     [baseApi.reducerPath]: baseApi.reducer,
+    //     auth: persistedAuthReducer
+    // },
     middleware: getDefaultMiddlewares => getDefaultMiddlewares({
         serializableCheck: {
             ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { FaUserGroup } from "react-icons/fa6";
 import { TbHeartBitcoin } from "react-icons/tb";
 
@@ -25,6 +26,9 @@ export default function About() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Helmet>
+        <title>DetailX | About</title>
+      </Helmet>
       {/* Hero Section */}
       <section className="text-center mb-12">
         <h1 className="text-4xl font-bold text-neutral mb-4">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { BiLocationPlus } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
@@ -37,6 +38,9 @@ export default function Contact() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Helmet>
+        <title>DetailX | Contact</title>
+      </Helmet>
       <div className="grid md:grid-cols-2 gap-8">
         {/* Contact Information */}
         <div className="bg-gray-900 text-white p-6 rounded-lg shadow-md">

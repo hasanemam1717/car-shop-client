@@ -12,7 +12,10 @@ import CreateCar from "../pages/Dashboard/CreateCar";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
 import UserDashboard from "../components/layout/UserDashboard";
 import OrderPage from "../components/products/OrderPage";
-import CheckoutPage from "../pages/Dashboard/Checkout";
+import CheckoutPage from "../pages/Dashboard/ViewOrder";
+import WishlistPage from "../pages/shared/Wishlist";
+import VerifyOrder from "../pages/VerifyOrder";
+import ViewOrder from "../pages/Dashboard/ViewOrder";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,22 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About></About>,
+      },
+      {
+        path: "wishlist",
+        element: (
+          <ProtectedRoute>
+            <WishlistPage></WishlistPage>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "verify-order",
+        element: <VerifyOrder></VerifyOrder>,
+      },
+      {
+        path: "view-order",
+        element: <ViewOrder></ViewOrder>,
       },
       {
         path: "allcar",

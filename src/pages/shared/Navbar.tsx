@@ -5,9 +5,12 @@ import { BiArrowFromBottom, BiArrowFromTop } from "react-icons/bi";
 import { logOut, useCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import Dropdown from "../../components/ui/Dropdown";
+import { CiShoppingCart } from "react-icons/ci";
+import { selectCurrentProducts } from "../../redux/feature/product/productCartSlice";
 
 export default function Navbar() {
   const user = useAppSelector(useCurrentUser);
+  const item = useAppSelector(selectCurrentProducts);
   const dispatch = useAppDispatch();
   // console.log(user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,14 +71,6 @@ export default function Navbar() {
 
             <div className="flex items-center space-x-4">
               {/* wishlist */}
-              {/* <Link
-                to="/cart"
-                className="relative text-neutral hover:text-primary"
-              >
-                <CiShoppingCart className="h-6 w-6" />
-
-                <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full h-4 w-4 flex items-center justify-center text-xs"></span>
-              </Link> */}
 
               {/* <div className="relative group">
                 <FaUserFriends className="h-6 w-6 text-neutral hover:text-primary" />
@@ -85,6 +80,16 @@ export default function Navbar() {
               </div> */}
               {user ? (
                 <>
+                  <Link
+                    to="wishlist"
+                    className="relative text-neutral hover:text-primary"
+                  >
+                    <CiShoppingCart className="h-6 w-6" />
+
+                    <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full h-4 w-4 flex items-center justify-center text-xs">
+                      {item.length}
+                    </span>
+                  </Link>
                   <Dropdown></Dropdown>
                 </>
               ) : (
@@ -152,6 +157,13 @@ export default function Navbar() {
                             <Link to={"/dashboardUser"}>Dashboard</Link>
                           </>
                         )}
+                      </Link>
+
+                      <Link
+                        to="wishlist"
+                        className="text-neutral hover:bg-base block px-3 py-2 rounded-md"
+                      >
+                        Wishlist
                       </Link>
 
                       <button

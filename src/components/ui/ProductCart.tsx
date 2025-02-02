@@ -1,9 +1,24 @@
 import { toast } from "sonner";
-import { useAppSelector } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { useCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import { addToCart } from "../../redux/feature/product/productCartSlice";
 
-const ProductCart = ({ item }) => {
+export type TCar = {
+  _id: string;
+  name: string;
+  image: string;
+  brand: string;
+  model: string;
+  year: number;
+  price: number;
+  category: string;
+  description: string;
+  quantity: number;
+  inStock: boolean;
+};
+
+const ProductCart = ({ item }: { item: TCar }) => {
   const {
     image,
     description,
@@ -16,11 +31,24 @@ const ProductCart = ({ item }) => {
   } = item;
   const user = useAppSelector(useCurrentUser);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const handleOrder = (id) => {
-    console.log("clicked", id, "Email user", user.email, item.price);
+  const handleAddToCart = () => {
     try {
       if (user) {
+        toast.success(
+          "If you want to add to cart right now go to wishlist page."
+        );
+        dispatch(
+          addToCart({
+            product: item._id,
+            name,
+            price,
+            quantity: 1,
+            inStock,
+            image,
+          })
+        );
       } else {
         toast.error("You well be logged in fast.");
         navigate("/login");
@@ -68,7 +96,7 @@ const ProductCart = ({ item }) => {
         </p>
         <div className="mt-4">
           <button
-            onClick={() => handleOrder(item?._id)}
+            onClick={() => handleAddToCart()}
             disabled={!inStock}
             className={`w-full py-2 font-semibold text-white rounded ${
               inStock

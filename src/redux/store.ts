@@ -1,3 +1,4 @@
+import cartSlice from './feature/product/productCartSlice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import authSlice from './feature/auth/authSlice'
 import { baseApi } from './api/baseApi'
@@ -13,7 +14,6 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist'
-import { cartSlice } from './feature/product/productCartSlice'
 
 
 
@@ -21,7 +21,7 @@ import { cartSlice } from './feature/product/productCartSlice'
 export const rootReducer = combineReducers({
     [baseApi.reducerPath]: baseApi.reducer,
     auth: authSlice.reducer,
-    cart: cartSlice.reducer,
+    cart: cartSlice,
 });
 const persistConfig = {
     key: "root",

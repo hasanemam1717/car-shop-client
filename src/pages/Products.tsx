@@ -26,7 +26,9 @@ const Products = () => {
   };
 
   // Fetch data using the Redux query hook
-  const { data, isLoading, isError } = useGetAllCarQuery(queryParams);
+  const { data, isLoading, isError } = useGetAllCarQuery(queryParams, {
+    refetchOnMountOrArgChange: true,
+  });
   // console.log(data?.response);
 
   // Handle search form submission

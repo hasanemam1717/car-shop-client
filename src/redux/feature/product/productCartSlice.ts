@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../store";
 
 export interface ICartItem {
     product: string; // Product ID
     name: string;
     price: number;
     quantity: number;
-    stock: number;
-    imageUrl: string; // Optional: for displaying in the UI
+    inStock: boolean;
+    image: string; // Optional: for displaying in the UI
 }
 
 interface CartState {
@@ -21,7 +22,7 @@ const initialState: CartState = {
     totalPrice: 0,
 };
 
-export const cartSlice = createSlice({
+const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
@@ -72,3 +73,7 @@ export const { addToCart, removeFromCart, updateQuantity, clearCart } =
     cartSlice.actions;
 
 export default cartSlice.reducer;
+
+export const selectCurrentProducts = (state: RootState) => state.cart.items;
+export const calculateTotalQuantity = (state: RootState) => state.cart.totalQuantity;
+export const calculateTotalPrice = (state: RootState) => state.cart.totalPrice;

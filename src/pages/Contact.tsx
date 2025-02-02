@@ -53,9 +53,7 @@ export default function Contact() {
               <BiLocationPlus className="h-6 w-6 text-primary mr-4" />
               <div>
                 <h3 className="font-semibold">Our Address</h3>
-                <p className="text-neutral">
-                  123 Bike Street, Cycling City, BC 12345
-                </p>
+                <p className="text-neutral">Khilkhet,Dhaka ,Bangladesh</p>
               </div>
             </div>
 
@@ -63,7 +61,7 @@ export default function Contact() {
               <PiPhone className="h-6 w-6 text-secondary mr-4" />
               <div>
                 <h3 className="font-semibold">Phone</h3>
-                <p className="text-neutral">(555) 123-4567</p>
+                <p className="text-neutral">(880) 123-4567</p>
                 <p className="text-neutral">Support Hours: Mon-Fri, 9am-5pm</p>
               </div>
             </div>
@@ -72,8 +70,8 @@ export default function Contact() {
               <MdEmail className="h-6 w-6 text-accent mr-4" />
               <div>
                 <h3 className="font-semibold">Email</h3>
-                <p className="text-neutral">support@bikeshop.com</p>
-                <p className="text-neutral">sales@bikeshop.com</p>
+                <p className="text-neutral">support@carshop.com</p>
+                <p className="text-neutral">sales@carshop.com</p>
               </div>
             </div>
           </div>

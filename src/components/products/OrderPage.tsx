@@ -1,13 +1,13 @@
 import { useCurrentUser } from "../../redux/feature/auth/authSlice";
-import { useGetDetailsQuery } from "../../redux/feature/product/orderApi";
+import { useGetOrdersQuery } from "../../redux/feature/product/orderApi";
 import { useAppSelector } from "../../redux/hook";
 
 const OrderPage = () => {
   // Get the current user's email from Redux state
-  const user = useAppSelector(useCurrentUser);
+  const { email } = useAppSelector(useCurrentUser);
   // Fetch order data using the user's email
-  const { data, isLoading, isError } = useGetDetailsQuery(undefined);
-  // console.log(data?.data);
+  const { data, isLoading, isError } = useGetOrdersQuery(undefined);
+  console.log(data?.data);
 
   // Display loading state
   if (isLoading) {
@@ -49,10 +49,10 @@ const OrderPage = () => {
                   Name
                 </th>
                 <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">
-                  Quantity
+                  Payment Status
                 </th>
                 <th className="py-3 px-4 text-left text-sm font-semibold text-gray-700">
-                  Price (BDT)
+                  Total Price (BDT)
                 </th>
               </tr>
             </thead>
@@ -62,20 +62,18 @@ const OrderPage = () => {
                   key={order.id}
                   className="border-b border-gray-200 hover:bg-gray-50"
                 >
-                  <td className="py-3 px-4 text-sm text-gray-700">
-                    {user.email}
-                  </td>
+                  <td className="py-3 px-4 text-sm text-gray-700">{email}</td>
                   <td className="py-3 px-4 text-sm text-gray-700">
                     {/* Read-only quantity */}
                     <input
                       type="text"
-                      value={order.quantity}
+                      value={order.status}
                       readOnly
                       className="w-16 text-center bg-gray-100 rounded-md p-1 cursor-not-allowed"
                     />
                   </td>
                   <td className="py-3 px-4 text-sm text-gray-700">
-                    ${order.price}
+                    ${order.totalPrice}
                   </td>
                 </tr>
               ))}

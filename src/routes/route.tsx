@@ -16,6 +16,7 @@ import CheckoutPage from "../pages/Dashboard/ViewOrder";
 import WishlistPage from "../pages/shared/Wishlist";
 import VerifyOrder from "../pages/VerifyOrder";
 import ViewOrder from "../pages/Dashboard/ViewOrder";
+import TotalRevenuePage from "../pages/Dashboard/TotalRevenue";
 
 const router = createBrowserRouter([
   {
@@ -40,11 +41,20 @@ const router = createBrowserRouter([
       },
       {
         path: "verify-order",
-        element: <VerifyOrder></VerifyOrder>,
+        element: (
+          <ProtectedRoute>
+            {" "}
+            <VerifyOrder></VerifyOrder>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "view-order",
-        element: <ViewOrder></ViewOrder>,
+        element: (
+          <ProtectedRoute>
+            <ViewOrder></ViewOrder>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "allcar",
@@ -77,6 +87,10 @@ const router = createBrowserRouter([
         element: <CreateCar></CreateCar>,
       },
       {
+        path: "orders",
+        element: <TotalRevenuePage></TotalRevenuePage>,
+      },
+      {
         path: "user",
         element: <Users></Users>,
       },
@@ -97,10 +111,6 @@ const router = createBrowserRouter([
       {
         path: "my-order",
         element: <OrderPage></OrderPage>,
-      },
-      {
-        path: "user",
-        element: <Users></Users>,
       },
       {
         path: "checkout",

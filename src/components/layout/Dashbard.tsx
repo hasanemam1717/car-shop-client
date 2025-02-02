@@ -1,4 +1,4 @@
-import { BiUser } from "react-icons/bi";
+import { BiBorderOuter, BiUser } from "react-icons/bi";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { useCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useAppSelector } from "../../redux/hook";
@@ -18,7 +18,7 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
       <div className="bg-gray-900 text-white p-4 flex justify-between items-center">
-        <Link to={"/"} className="text-2xl font-bold">
+        <Link to={"/"} className="text-2xl font-bold uppercase">
           {user?.role} Dashboard
         </Link>
         {/* Mobile Menu Toggle Button */}
@@ -50,10 +50,11 @@ const Dashboard = () => {
             </NavLink>
             <NavLink
               className="flex gap-2 hover:bg-red-600 rounded-md text-xl p-2 items-center"
-              to={"/dashboard/user"}
+              to={"/dashboard/orders"}
               onClick={() => setIsSidebarOpen(false)}
             >
-              <BiUser /> User
+              <BiBorderOuter />
+              Total Orders
             </NavLink>
             <NavLink
               className="flex gap-2 hover:bg-red-600 rounded-md text-xl p-2 items-center"

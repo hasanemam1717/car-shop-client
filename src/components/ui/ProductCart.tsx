@@ -35,6 +35,10 @@ const ProductCart = ({ item }: { item: TCar }) => {
 
   const handleAddToCart = () => {
     try {
+      if (user?.role === "admin") {
+        toast.error("Admin can not order car.");
+        return;
+      }
       if (user) {
         toast.success(
           "If you want to add to cart right now go to wishlist page."

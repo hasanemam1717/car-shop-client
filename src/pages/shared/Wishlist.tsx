@@ -6,12 +6,12 @@ import {
 } from "../../redux/feature/product/productCartSlice";
 import { useCreateOrderMutation } from "../../redux/feature/product/orderApi";
 import { toast } from "sonner";
-import { useCurrentUserId } from "../../redux/feature/auth/authSlice";
+import { useCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useEffect } from "react";
 
 const WishlistPage = () => {
   const item = useAppSelector(selectCurrentProducts);
-  const userId = useAppSelector(useCurrentUserId);
+  const { role } = useAppSelector(useCurrentUser);
   const dispatch = useAppDispatch();
   const wishlistItems = item;
 
@@ -25,6 +25,8 @@ const WishlistPage = () => {
     0
   );
 
+  console.log(role);
+
   const [createOrder, { isLoading, isSuccess, data, isError, error }] =
     useCreateOrderMutation();
 
@@ -35,6 +37,10 @@ const WishlistPage = () => {
 
   // Handle add to cart
   const handleAddToCart = async () => {
+    if (role === "admin") {
+      toast.error("Admin can not order car.");
+      return;
+    }
     const cartInfo = {
       products: item,
     };

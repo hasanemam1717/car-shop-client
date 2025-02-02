@@ -5,7 +5,7 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: "John Doe",
+      name: "Hasan Emam",
       role: "Car Enthusiast",
       comment:
         "This is the best car dealership I've ever worked with. Their service is top-notch!",
@@ -14,7 +14,7 @@ const Testimonials = () => {
     },
     {
       id: 2,
-      name: "Jane Smith",
+      name: "K.M Ariful",
       role: "Car Collector",
       comment:
         "I found my dream car here. The team was very helpful and professional.",
@@ -23,7 +23,7 @@ const Testimonials = () => {
     },
     {
       id: 3,
-      name: "Michael Johnson",
+      name: "Alen Shopon",
       role: "Racing Driver",
       comment:
         "The quality of cars here is unmatched. Highly recommend this place!",
@@ -40,7 +40,7 @@ const Testimonials = () => {
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div className="absolute inset-0 bg-gray-950 bg-opacity-50"></div>
 
       {/* Content */}
       <div className="relative container mx-auto px-4">
@@ -49,7 +49,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial) => (
             <motion.div
               key={testimonial.id}
-              className="bg-white p-6 rounded-lg shadow-lg"
+              className="bg-gray-900 p-6 rounded-lg shadow-lg"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -65,10 +65,10 @@ const Testimonials = () => {
               </div>
 
               {/* Testimonial Content */}
-              <div className="mt-4 text-center text-black">
+              <div className="mt-4 text-center text-white">
                 <h3 className="text-xl font-semibold">{testimonial.name}</h3>
-                <p className="text-gray-600">{testimonial.role}</p>
-                <p className="mt-4 text-gray-700">{testimonial.comment}</p>
+                <p className="text-white">{testimonial.role}</p>
+                <p className="mt-4 text-white">{testimonial.comment}</p>
               </div>
             </motion.div>
           ))}

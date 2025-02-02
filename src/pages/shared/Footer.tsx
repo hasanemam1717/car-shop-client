@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/cars" className="hover:text-white">
+                <NavLink to="/allcarc" className="hover:text-white">
                   Cars
                 </NavLink>
               </li>

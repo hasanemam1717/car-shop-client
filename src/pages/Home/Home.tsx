@@ -18,7 +18,7 @@ const Home = () => {
         subHeading="Full-Service
           Detailing for Cars"
       ></SectionTitle>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+      <div className="grid container mx-auto grid-cols-1 lg:grid-cols-4 gap-10">
         {data?.response.map((item: any) => (
           <ProductCart key={item._id} item={item}></ProductCart>
         ))}

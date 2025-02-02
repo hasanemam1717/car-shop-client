@@ -18,7 +18,7 @@ const UserDashboard = () => {
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
       <div className="bg-blue-950 text-white p-4 flex justify-between items-center">
-        <Link to={"/"} className="text-2xl font-bold">
+        <Link to={"/"} className="text-2xl uppercase font-bold">
           {user?.role} Dashboard
         </Link>
         {/* Mobile Menu Toggle Button */}

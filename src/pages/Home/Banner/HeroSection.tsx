@@ -10,7 +10,7 @@ const HeroSection = () => {
       }}
     >
       {/* Overlay with blur and opacity */}
-      <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-gray-950 bg-opacity-50 backdrop-blur-sm"></div>
 
       {/* Content */}
       <div className="relative text-center text-white px-4">

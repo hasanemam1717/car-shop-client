@@ -2,9 +2,9 @@ import { baseApi } from "../../api/baseApi";
 
 const orderApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
-        getDetails: builder.query({
+        getRevenues: builder.query({
             query: () => ({
-                url: "/orders/details",
+                url: "/orders/revenue",
                 method: "GET",
             }),
             transformResponse: (response: any) => {
@@ -35,4 +35,4 @@ const orderApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useGetDetailsQuery, useCreateOrderMutation, useVerifyOrderQuery, useGetOrdersQuery } = orderApi;
+export const { useGetRevenuesQuery, useCreateOrderMutation, useVerifyOrderQuery, useGetOrdersQuery } = orderApi;

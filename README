@@ -1,0 +1,147 @@
+Car Shop Application
+The Car Shop Application is a user-friendly e-commerce platform designed to provide a seamless experience for buying and managing car-related products. The platform ensures secure authentication, smooth product management, and a visually appealing interface. It is built with responsiveness in mind, ensuring it works flawlessly across all devices. The application also includes robust error handling and loading states to enhance user experience.
+
+1. User Registration & Authentication (Role-Based)
+   Secure Registration and Login
+   Users can register with the following fields: name, email, and password.
+
+By default, registered users have the user role. Admins can be manually updated (no super admin functionality required).
+
+Passwords are securely hashed before storing in the database.
+
+Users can log in using their email and password.
+
+JWT (JSON Web Token)
+A JWT token is generated upon login for secure authentication.
+
+The token is stored in local storage to maintain user sessions.
+
+Logout
+The token is cleared from local storage upon logout, and the user is redirected to the login page.
+
+2. Public Routes
+   Home Page
+   Navbar: Includes a logo, favicon, navigation items, and buttons for login/signup.
+
+Banner: Highlights the platform or special offers (carousel optional).
+
+Featured Products: Displays up to 6 products with a "View All" button that redirects to the All Products Page.
+
+Extra Section: Includes relevant e-commerce content like testimonials or blogs.
+
+Footer: Contains essential links, social media icons, and contact details.
+
+All Products Page
+Search Functionality: Users can search by brand, car name, or category.
+
+Filters: Options for price range, model, brand, category, and availability.
+
+Dynamic Results: Results update based on search terms or selected filters.
+
+Product Cards: Display details like name, brand, model, price, and category.
+
+View Details Button: Redirects to the Product Details Page.
+
+Product Details Page
+Displays the product image and detailed information.
+
+Includes a "Buy Now" button that redirects to the checkout page.
+
+About Page
+Provides information about the shop and its mission.
+
+Includes any other relevant details.
+
+3. Private Routes
+   Checkout Page
+   Users can place orders for products.
+
+Ensures the ordered quantity does not exceed the product stock.
+
+Order Form: Includes product details, user details, total price calculation, and payment method.
+
+Payment Integration: Uses SurjoPay as the payment gateway.
+
+Order Now Button: Confirms the purchase.
+
+Dashboard (Role-Based Access)
+Admin Dashboard:
+
+Manage users (e.g., deactivate accounts).
+
+Manage products (CRUD operations).
+
+Manage orders (CRUD operations).
+
+User Dashboard:
+
+View orders.
+
+Manage profile settings.
+
+Update passwords (requires current password for security).
+
+Responsive Design
+The platform is fully responsive and works seamlessly on all screen sizes.
+
+Proper alignment, typography, and intuitive layouts are used.
+
+Error Handling
+User-friendly error messages are displayed for:
+
+Invalid login credentials.
+
+Registration errors (e.g., duplicate email).
+
+Failed operations (e.g., out-of-stock products).
+
+Loading States
+Spinners or loaders are displayed during API calls (e.g., login, data fetch).
+
+Toasts
+Notifications for important actions (e.g., "Login successful", "Order placed").
+
+Recommendation Functionalities (Optional)
+Track Order Section (Dashboard)
+User Side
+Track Order Status:
+
+Displays current order status (Pending, Processing, Shipped, Delivered) with a progress bar or step indicator.
+
+Clear labels for each step in the process.
+
+Order Tracking Page:
+
+Accessible via the user dashboard.
+
+Displays key order details:
+
+Order ID
+
+Product name, quantity, and price
+
+Estimated delivery date
+
+Current status
+
+Admin Side
+Update Order Status:
+
+Dropdown in the Admin Dashboard to update order statuses (Pending, Processing, Shipped, Delivered).
+
+Field for providing the estimated delivery date.
+
+Reflect Updates:
+
+Status changes are automatically visible to users.
+
+How to Run the Project
+Clone the Repository:
+
+bash
+git clone <repository-url>
+cd car-shop-application
+Install Dependencies:
+
+bash
+npm install

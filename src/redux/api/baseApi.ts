@@ -11,7 +11,7 @@ import { logOut, setUser } from "../feature/auth/authSlice";
 
 const baseQuery = fetchBaseQuery(
     {
-        baseUrl: 'http://localhost:5000/api',
+        baseUrl: 'https://car-store-backend-six.vercel.app/api',
         credentials: 'include',
         prepareHeaders: (headers, { getState }) => {
             const token = (getState() as RootState).auth.token
@@ -29,7 +29,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 > = async (args: any, api, extraOptions): Promise<any> => {
     let result = await baseQuery(args, api, extraOptions)
     if (result?.error?.status === 401) {
-        const res = await fetch('http://localhost:5000/api/auth/refresh-token', { method: "POST", credentials: "include" })
+        const res = await fetch('https://car-store-backend-six.vercel.app/api/auth/refresh-token', { method: "POST", credentials: "include" })
         const data = await res.json()
         if (data?.data?.accessToken) {
             const user = (api.getState() as RootState).auth.user

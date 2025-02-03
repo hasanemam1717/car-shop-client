@@ -8,10 +8,11 @@ import { useCreateOrderMutation } from "../../redux/feature/product/orderApi";
 import { toast } from "sonner";
 import { useCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useEffect } from "react";
+import { user } from "../../components/layout/Dashbard";
 
 const WishlistPage = () => {
   const item = useAppSelector(selectCurrentProducts);
-  const { role } = useAppSelector(useCurrentUser);
+  const { role } = useAppSelector(useCurrentUser) as user;
   const dispatch = useAppDispatch();
   const wishlistItems = item;
 

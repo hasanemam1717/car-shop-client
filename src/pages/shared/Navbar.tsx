@@ -7,9 +7,10 @@ import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import Dropdown from "../../components/ui/Dropdown";
 import { CiShoppingCart } from "react-icons/ci";
 import { selectCurrentProducts } from "../../redux/feature/product/productCartSlice";
+import { user } from "../../components/layout/Dashbard";
 
 export default function Navbar() {
-  const user = useAppSelector(useCurrentUser);
+  const user = useAppSelector(useCurrentUser) as user;
   const item = useAppSelector(selectCurrentProducts);
   const dispatch = useAppDispatch();
   // console.log(user);

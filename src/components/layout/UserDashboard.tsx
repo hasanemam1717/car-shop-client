@@ -1,13 +1,14 @@
-import { BiUser } from "react-icons/bi";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { useCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useAppSelector } from "../../redux/hook";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IoCreateOutline } from "react-icons/io5";
+import { Helmet } from "react-helmet-async";
+import { user } from "./Dashbard";
 
 const UserDashboard = () => {
-  const user = useAppSelector(useCurrentUser);
+  const user = useAppSelector(useCurrentUser) as user;
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -16,6 +17,9 @@ const UserDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
+      <Helmet>
+        <title>DetailX | User Dashboard</title>
+      </Helmet>
       {/* Header */}
       <div className="bg-blue-950 text-white p-4 flex justify-between items-center">
         <Link to={"/"} className="text-2xl uppercase font-bold">

@@ -3,20 +3,19 @@ import { baseApi } from "../../api/baseApi";
 const productApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getAllCar: builder.query({
-            query: (params: Record<string, unknown>) => ({
+            query: (params: Record<string, unknown> = {}) => ({ // Default to an empty object
                 url: "/cars",
                 method: "GET",
-                params: params, // Pass query parameters here
+                params: params, // Ensures it always receives an object
             }),
             transformResponse: (response: any) => {
-                // Transform the response if needed
                 return { response: response.data };
             },
         }),
         createCar: builder.mutation({
             query: (data) => ({
-                url: '/cars',
-                method: 'POST',
+                url: "/cars",
+                method: "POST",
                 body: data,
             }),
         }),

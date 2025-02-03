@@ -32,7 +32,7 @@ const Products = () => {
   // console.log(data?.response);
 
   // Handle search form submission
-  const onSubmit = (data: { search: string }) => {
+  const onSubmit = (data: any) => {
     handleSearch(data.search);
   };
 
@@ -187,9 +187,7 @@ const Products = () => {
                   total={data?.response?.length || 0}
                   onChange={handlePageChange}
                   showSizeChanger
-                  onShowSizeChange={(current, size) =>
-                    handlePageChange(1, size)
-                  }
+                  onShowSizeChange={(size) => handlePageChange(1, size)}
                 />
               </div>
             </>

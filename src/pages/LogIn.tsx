@@ -8,12 +8,7 @@ import { toast } from "sonner";
 import { Helmet } from "react-helmet-async";
 
 export default function LogIn() {
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      email: "admin@example.com",
-      password: "123456",
-    },
-  });
+  const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const [logIn] = useLoginMutation();
 

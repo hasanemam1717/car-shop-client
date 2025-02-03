@@ -1,4 +1,3 @@
-import Loading from "../../components/products/Loading";
 import { useGetOrdersQuery } from "../../redux/feature/product/orderApi";
 
 export interface Transaction {
@@ -20,7 +19,7 @@ export interface Product {
 export interface Order {
   transaction: Transaction;
   _id: string;
-  user: string;
+  userId: string;
   products: Product[];
   totalPrice: number;
   status: string;
@@ -37,7 +36,7 @@ export default function ViewOrder() {
   const orderData: Order[] = data?.data;
 
   if (isLoading) {
-    return <Loading></Loading>;
+    return <h1>Loading</h1>;
   }
 
   return (
@@ -51,7 +50,7 @@ export default function ViewOrder() {
             <div>
               <h3 className="text-xl font-bold mb-4">Customer Information</h3>
               <p className="text-white">
-                <span className="font-semibold">User ID:</span> {order.user}
+                <span className="font-semibold">User ID:</span> {order.userId}
               </p>
               <p className="text-white">
                 <span className="font-semibold">Order Date:</span>{" "}
@@ -85,14 +84,14 @@ export default function ViewOrder() {
           <div className="mt-6">
             <h3 className="text-xl font-bold mb-4">Products</h3>
             <ul className="space-y-2">
-              {order.products.map((product, i) => (
+              {/* {order.products.map((product, i) => (
                 <li key={i} className="text-white">
                   <span className="font-semibold">Product ID:</span>{" "}
                   {product.product},{" "}
                   <span className="font-semibold">Quantity:</span>{" "}
                   {product.quantity}
                 </li>
-              ))}
+              ))} */}
             </ul>
           </div>
           <div className="mt-6">

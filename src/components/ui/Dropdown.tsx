@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { logOut, useCurrentUser } from "../../redux/feature/auth/authSlice";
 import { FaRegUser } from "react-icons/fa6";
+import { user } from "../layout/Dashbard";
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const user = useAppSelector(useCurrentUser);
+  const user = useAppSelector(useCurrentUser) as user;
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);

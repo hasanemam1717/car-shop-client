@@ -1,13 +1,14 @@
 import { useCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useGetOrdersQuery } from "../../redux/feature/product/orderApi";
 import { useAppSelector } from "../../redux/hook";
+import { user } from "../layout/Dashbard";
 
 const OrderPage = () => {
   // Get the current user's email from Redux state
-  const { email } = useAppSelector(useCurrentUser);
+  const { email } = useAppSelector(useCurrentUser) as user;
   // Fetch order data using the user's email
   const { data, isLoading, isError } = useGetOrdersQuery(undefined);
-  console.log(data?.data);
+  // console.log(data?.data);
 
   // Display loading state
   if (isLoading) {
@@ -59,7 +60,7 @@ const OrderPage = () => {
             <tbody>
               {orders.map((order: any) => (
                 <tr
-                  key={order.id}
+                  key={order._id}
                   className="border-b border-gray-200 hover:bg-gray-50"
                 >
                   <td className="py-3 px-4 text-sm text-gray-700">{email}</td>

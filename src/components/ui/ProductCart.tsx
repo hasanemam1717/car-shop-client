@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { useCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../../redux/feature/product/productCartSlice";
+import { user } from "../layout/Dashbard";
 
 export type TCar = {
   _id: string;
@@ -29,7 +30,7 @@ const ProductCart = ({ item }: { item: TCar }) => {
     inStock,
     quantity,
   } = item;
-  const user = useAppSelector(useCurrentUser);
+  const user = useAppSelector(useCurrentUser) as user;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 

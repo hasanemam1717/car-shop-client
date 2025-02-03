@@ -7,7 +7,7 @@ import { toast } from "sonner";
 export default function Register() {
   const { register, reset, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const [registration, { data }] = useRegisterMutation();
+  const [registration, {}] = useRegisterMutation();
   console.log(registration);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {

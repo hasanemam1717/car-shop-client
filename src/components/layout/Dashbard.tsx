@@ -5,9 +5,18 @@ import { useAppSelector } from "../../redux/hook";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IoCreateOutline } from "react-icons/io5";
+import { Helmet } from "react-helmet-async";
+
+export interface user {
+  email: string;
+  role: string;
+  iat: number;
+  exp: number;
+}
 
 const Dashboard = () => {
-  const user = useAppSelector(useCurrentUser);
+  const user = useAppSelector(useCurrentUser) as user;
+  console.log(JSON.stringify(user));
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -16,6 +25,9 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
+      <Helmet>
+        <title>DetailX | Dashboard Admin</title>
+      </Helmet>
       {/* Header */}
       <div className="bg-gray-900 text-white p-4 flex justify-between items-center">
         <Link to={"/"} className="text-2xl font-bold uppercase">

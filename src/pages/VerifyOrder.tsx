@@ -1,6 +1,7 @@
 import { useSearchParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useVerifyOrderQuery } from "../redux/feature/product/orderApi";
+import Loading from "../components/products/Loading";
 
 export default function VerifyOrder() {
   const [searchParams] = useSearchParams();
@@ -20,7 +21,7 @@ export default function VerifyOrder() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen text-xl">
-        Loading...
+        <Loading></Loading>
       </div>
     );
   }
